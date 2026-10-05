@@ -1,4 +1,6 @@
 🏥 Hospital Management System
+
+
 The Hospital Management System (HMS) is a Salesforce‑based application designed to streamline hospital operations and improve patient care. It provides a centralized platform for managing patients, doctors, appointments, and billing processes.
 
 ✨ Key Features
