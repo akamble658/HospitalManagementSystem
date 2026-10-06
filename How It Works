@@ -1,0 +1,73 @@
+⚙️ How It Works
+The Hospital Management System is designed to manage Appointments, Patients, Doctors, and Medical Records inside Salesforce. Here’s the workflow:
+
+Appointment Creation
+
+Receptionists create an Appointment record (Appointment__c) for a Patient (Contact).
+
+Each Appointment is linked to both a Doctor and a Patient via lookup fields.
+
+Appointment type can be In‑Person Visit or Telemedicine, controlled by Record Types.
+
+Medical Records
+
+Each Appointment can have multiple Medical Records (Medical_Record__c) attached.
+
+Medical Records are in a Master‑Detail relationship with Appointment, so deleting an Appointment deletes its Medical Records.
+
+Records store diagnosis, prescriptions, vitals, and follow‑up date.
+
+Automation
+
+Formula Fields calculate Days Since Appointment, Is Overdue, and Appointment Summary.
+
+Roll‑Up Summary Fields show total Medical Records and finalized ones directly on the Appointment.
+
+Validation Rules enforce business logic (e.g., no past scheduling, completed appointments must have a date).
+
+Flows automate:
+
+Auto‑set Priority to High for Cardiology/Neurology.
+
+Create a follow‑up Task for the Doctor when an Appointment is marked Completed.
+
+Copy Patient Blood Type into Appointment when created.
+
+Screen Flow allows Receptionists to book appointments directly from the Patient’s Contact page.
+
+Security & Access
+
+Profiles control permissions:
+
+Doctors can read/create/edit but not delete.
+
+Receptionists can manage appointments but not medical records.
+
+Field‑Level Security hides Consultation Fee from Doctors.
+
+OWD & Role Hierarchy ensure appointments are private by default, with access flowing upward to managers.
+
+Sharing Rules open access selectively (e.g., High Priority appointments shared with Emergency Team).
+
+Data Quality
+
+Matching & Duplicate Rules prevent duplicate patient records.
+
+Validation Rules enforce consistency in appointment scheduling and status changes.
+
+🧩 End‑to‑End Flow
+Receptionist books an appointment via Quick Action Flow on the Patient’s Contact.
+
+Appointment record is created, linked to Doctor and Patient.
+
+Medical Records are added under the Appointment.
+
+Automations keep data consistent (priority, overdue checks, roll‑ups).
+
+Security ensures only the right people see/edit the right data.
+
+Managers and emergency teams get access through role hierarchy and sharing rules.
+
+👉 This section makes your README complete: it explains not just what you built but how the system behaves in practice.
+
+Would you like me to also add a diagram (text‑based flowchart) to visually show the process from Receptionist → Appointment → Medical Record → Automation → Security? That would make the README even more engaging for recruiters.
