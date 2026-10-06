@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="New Appointment">
+        <lightning-input type="date" label="Date" value={date} onchange={handleChange}></lightning-input>
+        <lightning-input type="time" label="Time" value={time} onchange={handleChange}></lightning-input>
+        <lightning-combobox label="Department" options={departmentOptions} value={department} onchange={handleChange}></lightning-combobox>
+        <lightning-combobox label="Priority" options={priorityOptions} value={priority} onchange={handleChange}></lightning-combobox>
+        <lightning-textarea label="Reason" value={reason} onchange={handleChange}></lightning-textarea>
+        <lightning-button label="Save" variant="brand" onclick={saveAppointment}></lightning-button>
+    </lightning-card>
+</template>
