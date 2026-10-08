@@ -1,4 +1,5 @@
 import { LightningElement, track } from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import createAppointment from '@salesforce/apex/AppointmentController.createAppointment';
 import getAppointments from '@salesforce/apex/AppointmentController.getAppointments';
 
@@ -24,7 +25,7 @@ export default class AppointmentForm extends LightningElement {
     ];
 
     handleChange(event) {
-        this[event.target.label.toLowerCase()] = event.target.value;
+        this[event.target.name] = event.target.value;
     }
 
     saveAppointment() {
@@ -36,10 +37,23 @@ export default class AppointmentForm extends LightningElement {
             reason: this.reason
         })
         .then(() => {
-            // success toast
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Success',
+                    message: 'Appointment created successfully',
+                    variant: 'success'
+                })
+            );
         })
         .catch(error => {
             console.error(error);
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: 'Failed to create appointment',
+                    variant: 'error'
+                })
+            );
         });
     }
 }

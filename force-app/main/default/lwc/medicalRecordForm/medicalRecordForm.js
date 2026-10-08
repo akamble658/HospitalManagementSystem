@@ -1,4 +1,5 @@
 import { LightningElement, track, api } from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import createMedicalRecord from '@salesforce/apex/MedicalRecordController.createMedicalRecord';
 
 export default class MedicalRecordForm extends LightningElement {
@@ -33,10 +34,23 @@ export default class MedicalRecordForm extends LightningElement {
             status: this.status
         })
         .then(() => {
-            // success toast
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Success',
+                    message: 'Medical record saved successfully',
+                    variant: 'success'
+                })
+            );
         })
         .catch(error => {
             console.error(error);
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: 'Failed to save medical record',
+                    variant: 'error'
+                })
+            );
         });
     }
 }

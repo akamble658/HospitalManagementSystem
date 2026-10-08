@@ -1,8 +1,8 @@
-import { LightningElement, wire } from 'lwc';
+import { LightningElement, wire ,api} from 'lwc';
 import getMedicalRecords from '@salesforce/apex/MedicalRecordController.getMedicalRecords';
 
 export default class MedicalRecordList extends LightningElement {
-    recordId; // Appointment Id
+ @api   recordId; // Appointment Id
     records;
     columns = [
         { label: 'Diagnosis', fieldName: 'Diagnosis__c' },

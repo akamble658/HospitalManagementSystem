@@ -1,4 +1,4 @@
-import { LightningElement, wire } from 'lwc';
+import { LightningElement, wire ,api} from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
 import NAME_FIELD from '@salesforce/schema/Contact.Name';
 import DOB_FIELD from '@salesforce/schema/Contact.Date_of_Birth__c';
@@ -7,7 +7,7 @@ import BLOOD_FIELD from '@salesforce/schema/Contact.Patient_Blood_Type__c';
 const fields = [NAME_FIELD, DOB_FIELD, BLOOD_FIELD];
 
 export default class PatientProfile extends LightningElement {
-    recordId; // passed from page
+   @api recordId; // passed from page
     patient;
 
     @wire(getRecord, { recordId: '$recordId', fields })
